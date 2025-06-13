@@ -2,6 +2,9 @@ import ttkbootstrap as ttk
 from ttkbootstrap.constants import *
 from tkinter import filedialog
 
+from decoder import decoder
+from encoder import encoder
+
 def center_window(window, width=300, height=200):
     screen_width = window.winfo_screenwidth()
     screen_height = window.winfo_screenheight()
@@ -20,12 +23,10 @@ def select_wav_file():
         print(f"Selected audio file: {file_path}")
 
 def encode():
-    # Placeholder for encoding logic
-    print("Encoding audio...")
+    encoder.encode_audio()
 
 def decode():
-    # Placeholder for decoding logic
-    print("Decoding audio...")
+    decoder.decode_audio()
 
 ##
  # Main application window
