@@ -30,7 +30,7 @@ def decode():
 ##
  # Main application window
 ##
-root = ttk.Window(title="Subliminal Audio Converter", size=(400, 120))
+root = ttk.Window(title="Subliminal Audio Generator", size=(400, 120))
 center_window(root, 400, 120)
 
 file_btn = ttk.Button(
