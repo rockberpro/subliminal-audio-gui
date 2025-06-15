@@ -12,7 +12,7 @@ def center_window(window, width=300, height=200):
     y = (screen_height // 2) - (height // 2)
     window.geometry(f'{width}x{height}+{x}+{y}')
 
-def inupt_wav_file():
+def input_file():
     file_path = filedialog.askopenfilename(
         filetypes=[("WAV files", "*.wav")],
         title="Select a WAV file"
@@ -22,7 +22,7 @@ def inupt_wav_file():
     else:
         feedback_var.set("No input file was selected.")
 
-def select_output_destination():
+def output_file():
     file_path = filedialog.asksaveasfilename(
         defaultextension=".wav",
         filetypes=[("WAV files", "*.wav"), ("All files", "*.*")],
@@ -55,12 +55,12 @@ input_frame = ttk.Frame(root)
 input_frame.pack(side=TOP, pady=(10, 0))
 
 file_btn = ttk.Button(
-    input_frame, text="Input file", bootstyle=INFO, command=inupt_wav_file
+    input_frame, text="Input file", bootstyle=INFO, command=input_file
 )
 file_btn.pack(side=LEFT, padx=(0, 5))
 
 output_btn = ttk.Button(
-    input_frame, text="Output file", bootstyle=SECONDARY, command=select_output_destination
+    input_frame, text="Output file", bootstyle=SECONDARY, command=output_file
 )
 output_btn.pack(side=LEFT, padx=(5, 0))
 
