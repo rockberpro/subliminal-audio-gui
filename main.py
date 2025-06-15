@@ -48,7 +48,7 @@ input_frame.pack(side=TOP, pady=(20, 0))
 
 # Frame para input
 input_btn_frame = ttk.Frame(input_frame)
-input_btn_frame.grid(row=0, column=0, padx=(0, 10))
+input_btn_frame.grid(row=0, column=0, padx=(60, 10))  # aumente o deslocamento para a direita
 file_btn = ttk.Button(
     input_btn_frame, text="Input file", bootstyle=INFO, command=input_file
 )
