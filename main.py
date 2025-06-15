@@ -1,6 +1,6 @@
 import ttkbootstrap as ttk
 from ttkbootstrap.constants import *
-from tkinter import filedialog
+from tkinter import filedialog, StringVar
 
 from decoder import decoder
 from encoder import encoder
@@ -8,19 +8,30 @@ from encoder import encoder
 def center_window(window, width=300, height=200):
     screen_width = window.winfo_screenwidth()
     screen_height = window.winfo_screenheight()
-
     x = (screen_width // 2) - (width // 2)
     y = (screen_height // 2) - (height // 2)
-
     window.geometry(f'{width}x{height}+{x}+{y}')
 
-def select_wav_file():
+def input_file():
     file_path = filedialog.askopenfilename(
         filetypes=[("WAV files", "*.wav")],
-        title="Select a WAV file"
+        title="Select source WAV file"
     )
     if file_path:
-        print(f"Selected audio file: {file_path}")
+        feedback_var.set(f"{file_path.split('/')[-1]}")
+    else:
+        feedback_var.set("No input file was selected.")
+
+def output_file():
+    file_path = filedialog.asksaveasfilename(
+        defaultextension=".wav",
+        filetypes=[("WAV files", "*.wav"), ("All files", "*.*")],
+        title="Select destination WAV file"
+    )
+    if file_path:
+        output_feedback_var.set(f"{file_path.split('/')[-1]}")
+    else:
+        output_feedback_var.set("No output destination selected.")
 
 def encode():
     encoder.encode_audio()
@@ -28,25 +39,51 @@ def encode():
 def decode():
     decoder.decode_audio()
 
-##
- # Main application window
-##
-root = ttk.Window(title="Subliminal Audio Generator", size=(400, 120))
-center_window(root, 400, 120)
+root = ttk.Window(title="Subliminal Audio Generator", size=(400, 210))  # Reduza a altura aqui
+center_window(root, 400, 210)
 
+# Container para seleção de arquivos
+input_frame = ttk.Frame(root)
+input_frame.pack(side=TOP, pady=(20, 0))
+
+# Input file
 file_btn = ttk.Button(
-    root, text="Select file", bootstyle=INFO, command=select_wav_file
+    input_frame, text="Input file", bootstyle=INFO, command=input_file, width=15  # ajuste o valor conforme necessário
 )
-file_btn.pack(side=LEFT, padx=20, pady=30, expand=True)
+file_btn.grid(row=0, column=0, sticky="w", padx=(40, 10), pady=(0, 5))
+feedback_var = StringVar()
+feedback_label = ttk.Label(
+    input_frame, textvariable=feedback_var, bootstyle=SECONDARY, width=32, anchor="w"
+)
+feedback_label.grid(row=0, column=1, sticky="w", padx=(0, 40), pady=(0, 5))
+
+# Output file
+output_btn = ttk.Button(
+    input_frame, text="Output file", bootstyle=SECONDARY, command=output_file, width=15  # use o mesmo valor
+)
+output_btn.grid(row=1, column=0, sticky="w", padx=(40, 10), pady=(0, 5))
+output_feedback_var = StringVar()
+output_feedback_label = ttk.Label(
+    input_frame, textvariable=output_feedback_var, bootstyle=SECONDARY, width=32, anchor="w"
+)
+output_feedback_label.grid(row=1, column=1, sticky="w", padx=(0, 40), pady=(0, 5))
+
+# Separador visual
+separator = ttk.Separator(root, orient="horizontal")
+separator.pack(fill="x", pady=20)
+
+# Container para botões de ação
+action_frame = ttk.Frame(root)
+action_frame.pack(side=TOP, pady=(0, 0))  # Reduza ou remova o padding inferior
 
 encode_btn = ttk.Button(
-    root, text="Encode", bootstyle=SUCCESS, command=encode
+    action_frame, text="Encode", bootstyle=SUCCESS, command=encode
 )
-encode_btn.pack(side=LEFT, padx=20, pady=30, expand=True)
+encode_btn.pack(side=LEFT, padx=20)
 
 decode_btn = ttk.Button(
-    root, text="Decode", bootstyle=WARNING, command=decode
+    action_frame, text="Decode", bootstyle=WARNING, command=decode
 )
-decode_btn.pack(side=LEFT, padx=20, pady=30, expand=True)
+decode_btn.pack(side=LEFT, padx=20)
 
 root.mainloop()
