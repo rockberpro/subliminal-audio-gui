@@ -18,7 +18,7 @@ def input_file():
         title="Select a WAV file"
     )
     if file_path:
-        feedback_var.set(f"Source: {file_path.split('/')[-1]}")
+        feedback_var.set(f"{file_path.split('/')[-1]}")
     else:
         feedback_var.set("No input file was selected.")
 
@@ -29,7 +29,7 @@ def output_file():
         title="Select destination filename"
     )
     if file_path:
-        output_feedback_var.set(f"Destination: {file_path.split('/')[-1]}")
+        output_feedback_var.set(f"{file_path.split('/')[-1]}")
     else:
         output_feedback_var.set("No output destination selected.")
 
