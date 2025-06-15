@@ -5,7 +5,6 @@ from scipy.signal import butter, sosfilt
 from tkinter import messagebox
 
 class decoder:
-
     def lowpass_filter(audio, sr, cutoff, order=8):
         """Low-pass filter with specified cutoff frequency"""
         nyquist = 0.5 * sr
