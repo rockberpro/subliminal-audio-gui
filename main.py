@@ -15,7 +15,7 @@ def center_window(window, width=300, height=200):
 def input_file():
     file_path = filedialog.askopenfilename(
         filetypes=[("WAV files", "*.wav")],
-        title="Select a WAV file"
+        title="Select source WAV file"
     )
     if file_path:
         feedback_var.set(f"{file_path.split('/')[-1]}")
