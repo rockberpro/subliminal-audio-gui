@@ -57,11 +57,15 @@ output_btn = ttk.Button(
 output_btn.grid(row=0, column=1, padx=(10, 0))
 
 feedback_var = StringVar()
-feedback_label = ttk.Label(input_frame, textvariable=feedback_var, bootstyle=SECONDARY)
+feedback_label = ttk.Label(
+    input_frame, textvariable=feedback_var, bootstyle=SECONDARY, width=28  # largura fixa
+)
 feedback_label.grid(row=1, column=0, pady=(5, 0))
 
 output_feedback_var = StringVar()
-output_feedback_label = ttk.Label(input_frame, textvariable=output_feedback_var, bootstyle=SECONDARY)
+output_feedback_label = ttk.Label(
+    input_frame, textvariable=output_feedback_var, bootstyle=SECONDARY, width=28  # largura fixa
+)
 output_feedback_label.grid(row=1, column=1, pady=(5, 0))
 
 # Separador visual
