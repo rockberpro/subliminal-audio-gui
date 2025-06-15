@@ -46,27 +46,31 @@ center_window(root, 400, 210)
 input_frame = ttk.Frame(root)
 input_frame.pack(side=TOP, pady=(20, 0))
 
+# Frame para input
+input_btn_frame = ttk.Frame(input_frame)
+input_btn_frame.grid(row=0, column=0, padx=(0, 10))
 file_btn = ttk.Button(
-    input_frame, text="Input file", bootstyle=INFO, command=input_file
+    input_btn_frame, text="Input file", bootstyle=INFO, command=input_file
 )
-file_btn.grid(row=0, column=0, padx=(0, 10))
-
-output_btn = ttk.Button(
-    input_frame, text="Output file", bootstyle=SECONDARY, command=output_file
-)
-output_btn.grid(row=0, column=1, padx=(10, 0))
-
+file_btn.pack(anchor="w")
 feedback_var = StringVar()
 feedback_label = ttk.Label(
-    input_frame, textvariable=feedback_var, bootstyle=SECONDARY, width=28  # largura fixa
+    input_btn_frame, textvariable=feedback_var, bootstyle=SECONDARY, width=28
 )
-feedback_label.grid(row=1, column=0, pady=(5, 0))
+feedback_label.pack(anchor="w", pady=(5, 0))
 
+# Frame para output
+output_btn_frame = ttk.Frame(input_frame)
+output_btn_frame.grid(row=0, column=1, padx=(10, 0))
+output_btn = ttk.Button(
+    output_btn_frame, text="Output file", bootstyle=SECONDARY, command=output_file
+)
+output_btn.pack(anchor="w")
 output_feedback_var = StringVar()
 output_feedback_label = ttk.Label(
-    input_frame, textvariable=output_feedback_var, bootstyle=SECONDARY, width=28  # largura fixa
+    output_btn_frame, textvariable=output_feedback_var, bootstyle=SECONDARY, width=28
 )
-output_feedback_label.grid(row=1, column=1, pady=(5, 0))
+output_feedback_label.pack(anchor="w", pady=(5, 0))
 
 # Separador visual
 separator = ttk.Separator(root, orient="horizontal")
