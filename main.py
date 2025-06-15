@@ -76,7 +76,7 @@ input_feedback_label.grid(row=0, column=1, sticky="w", padx=(0, 40), pady=(0, 5)
 
 # Output file
 output_btn = ttk.Button(
-    input_frame, text="Output file", bootstyle=SECONDARY, command=output_file, width=15
+    input_frame, text="Output file", bootstyle=INFO, command=output_file, width=15
 )
 output_btn.grid(row=1, column=0, sticky="w", padx=(40, 10), pady=(0, 5))
 output_feedback_var = StringVar()
