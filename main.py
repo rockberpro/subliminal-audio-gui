@@ -20,7 +20,7 @@ def input_file():
     if file_path:
         feedback_var.set(f"{file_path.split('/')[-1]}")
     else:
-        feedback_var.set("No input file was selected.")
+        feedback_var.set("No input file was selected")
 
 def output_file():
     file_path = filedialog.asksaveasfilename(
@@ -31,7 +31,7 @@ def output_file():
     if file_path:
         output_feedback_var.set(f"{file_path.split('/')[-1]}")
     else:
-        output_feedback_var.set("No output destination selected.")
+        output_feedback_var.set("No output file was chosen")
 
 def encode():
     encoder.encode_audio()
