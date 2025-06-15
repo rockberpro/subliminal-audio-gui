@@ -1,6 +1,8 @@
 import ttkbootstrap as ttk
 from ttkbootstrap.constants import *
-from tkinter import filedialog, StringVar
+from tkinter import messagebox
+from tkinter import filedialog
+from tkinter import StringVar
 
 from decoder import decoder
 from encoder import encoder
@@ -20,8 +22,6 @@ def input_file():
     if file_path:
         input_file_path.set(file_path)
         input_feedback_var.set(f"{file_path.split('/')[-1]}")
-    else:
-        input_feedback_var.set("No input file was selected")
 
 def output_file():
     file_path = filedialog.asksaveasfilename(
@@ -32,15 +32,13 @@ def output_file():
     if file_path:
         output_file_path.set(file_path)
         output_feedback_var.set(f"{file_path.split('/')[-1]}")
-    else:
-        output_feedback_var.set("No output file was chosen")
 
 def encode():
     global input_file_path, output_file_path
     if not input_file_path.get():
-        input_feedback_var.set("Select input file")
+        messagebox.showerror("Error", "Select input file before encoding")
     if not output_file_path.get():
-        output_feedback_var.set("Select output file")
+        messagebox.showerror("Error", "Select output file before encoding")
     if not input_file_path.get() or not output_file_path.get():
         return
     encoder.encode_audio(input_file_path.get(), output_file_path.get())
@@ -48,9 +46,9 @@ def encode():
 def decode():
     global input_file_path, output_file_path
     if not input_file_path.get():
-        input_feedback_var.set("Select input file")
+        messagebox.showerror("Error", "Select input file before decoding")
     if not output_file_path.get():
-        output_feedback_var.set("Select output file")
+        messagebox.showerror("Error", "Select output file before decoding")
     if not input_file_path.get() or not output_file_path.get():
         return
     decoder.decode_audio(input_file_path.get(), output_file_path.get())
