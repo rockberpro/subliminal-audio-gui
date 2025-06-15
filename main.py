@@ -26,7 +26,7 @@ def output_file():
     file_path = filedialog.asksaveasfilename(
         defaultextension=".wav",
         filetypes=[("WAV files", "*.wav"), ("All files", "*.*")],
-        title="Select destination filename"
+        title="Select destination WAV file"
     )
     if file_path:
         output_feedback_var.set(f"{file_path.split('/')[-1]}")
