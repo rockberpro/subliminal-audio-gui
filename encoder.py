@@ -86,6 +86,6 @@ class encoder:
         # === Save output WAV ===
         wavfile.write(output_file_path, sample_rate, modulated_int16)
 
+        # print(f"Modulated signal contains frequencies above {carrier_freq} Hz")
         filename = f"{output_file_path.split('/')[-1]}"
         messagebox.showinfo("Success", f"Subliminal audio generated and saved as '{filename}'")
-        # print(f"Modulated signal contains frequencies above {carrier_freq} Hz")
