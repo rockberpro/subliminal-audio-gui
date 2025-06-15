@@ -39,43 +39,47 @@ def encode():
 def decode():
     decoder.decode_audio()
 
-root = ttk.Window(title="Subliminal Audio Generator", size=(400, 200))
-center_window(root, 400, 200)
+root = ttk.Window(title="Subliminal Audio Generator", size=(400, 210))  # Reduza a altura aqui
+center_window(root, 400, 210)
 
-feedback_var = StringVar()
-feedback_label = ttk.Label(root, textvariable=feedback_var, bootstyle=SECONDARY)
-feedback_label.pack(side=TOP, pady=(10, 0))
-
-output_feedback_var = StringVar()
-output_feedback_label = ttk.Label(root, textvariable=output_feedback_var, bootstyle=SECONDARY)
-output_feedback_label.pack(side=TOP, pady=(5, 0))
-
-# Container for input buttons
+# Container para seleção de arquivos
 input_frame = ttk.Frame(root)
-input_frame.pack(side=TOP, pady=(10, 0))
+input_frame.pack(side=TOP, pady=(20, 0))
 
 file_btn = ttk.Button(
     input_frame, text="Input file", bootstyle=INFO, command=input_file
 )
-file_btn.pack(side=LEFT, padx=(0, 5))
+file_btn.grid(row=0, column=0, padx=(0, 10))
 
 output_btn = ttk.Button(
     input_frame, text="Output file", bootstyle=SECONDARY, command=output_file
 )
-output_btn.pack(side=LEFT, padx=(5, 0))
+output_btn.grid(row=0, column=1, padx=(10, 0))
 
-# Container for action buttons
+feedback_var = StringVar()
+feedback_label = ttk.Label(input_frame, textvariable=feedback_var, bootstyle=SECONDARY)
+feedback_label.grid(row=1, column=0, pady=(5, 0))
+
+output_feedback_var = StringVar()
+output_feedback_label = ttk.Label(input_frame, textvariable=output_feedback_var, bootstyle=SECONDARY)
+output_feedback_label.grid(row=1, column=1, pady=(5, 0))
+
+# Separador visual
+separator = ttk.Separator(root, orient="horizontal")
+separator.pack(fill="x", pady=20)
+
+# Container para botões de ação
 action_frame = ttk.Frame(root)
-action_frame.pack(side=TOP, pady=20)
+action_frame.pack(side=TOP, pady=(0, 0))  # Reduza ou remova o padding inferior
 
 encode_btn = ttk.Button(
     action_frame, text="Encode", bootstyle=SUCCESS, command=encode
 )
-encode_btn.pack(side=LEFT, padx=10)
+encode_btn.pack(side=LEFT, padx=20)
 
 decode_btn = ttk.Button(
     action_frame, text="Decode", bootstyle=WARNING, command=decode
 )
-decode_btn.pack(side=LEFT, padx=10)
+decode_btn.pack(side=LEFT, padx=20)
 
 root.mainloop()
