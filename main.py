@@ -48,7 +48,7 @@ input_frame.pack(side=TOP, pady=(20, 0))
 
 # Input file
 file_btn = ttk.Button(
-    input_frame, text="Input file", bootstyle=INFO, command=input_file
+    input_frame, text="Input file", bootstyle=INFO, command=input_file, width=15  # ajuste o valor conforme necessário
 )
 file_btn.grid(row=0, column=0, sticky="w", padx=(40, 10), pady=(0, 5))
 feedback_var = StringVar()
@@ -59,7 +59,7 @@ feedback_label.grid(row=0, column=1, sticky="w", padx=(0, 40), pady=(0, 5))
 
 # Output file
 output_btn = ttk.Button(
-    input_frame, text="Output file", bootstyle=SECONDARY, command=output_file
+    input_frame, text="Output file", bootstyle=SECONDARY, command=output_file, width=15  # use o mesmo valor
 )
 output_btn.grid(row=1, column=0, sticky="w", padx=(40, 10), pady=(0, 5))
 output_feedback_var = StringVar()
