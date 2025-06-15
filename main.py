@@ -3,6 +3,7 @@ from ttkbootstrap.constants import *
 from tkinter import messagebox
 from tkinter import filedialog
 from tkinter import StringVar
+import tkinter as tk
 
 from decoder import decoder
 from encoder import encoder
@@ -53,7 +54,9 @@ def decode():
         return
     decoder.decode_audio(input_file_path.get(), output_file_path.get())
 
-root = ttk.Window(title="Subliminal Audio Generator", size=(400, 210))
+root = tk.Tk()
+root.iconbitmap('./img/radar.ico')
+root.title("Subliminal Audio Generator")
 center_window(root, 400, 210)
 
 input_file_path = StringVar()
