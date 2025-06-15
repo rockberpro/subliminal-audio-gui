@@ -39,16 +39,16 @@ def encode():
 def decode():
     decoder.decode_audio()
 
-root = ttk.Window(title="Subliminal Audio Generator", size=(400, 210))  # Reduza a altura aqui
+root = ttk.Window(title="Subliminal Audio Generator", size=(400, 210))
 center_window(root, 400, 210)
 
-# Container para seleção de arquivos
+# Container for input and output file selection
 input_frame = ttk.Frame(root)
 input_frame.pack(side=TOP, pady=(20, 0))
 
 # Input file
 file_btn = ttk.Button(
-    input_frame, text="Input file", bootstyle=INFO, command=input_file, width=15  # ajuste o valor conforme necessário
+    input_frame, text="Input file", bootstyle=INFO, command=input_file, width=15
 )
 file_btn.grid(row=0, column=0, sticky="w", padx=(40, 10), pady=(0, 5))
 feedback_var = StringVar()
@@ -59,7 +59,7 @@ feedback_label.grid(row=0, column=1, sticky="w", padx=(0, 40), pady=(0, 5))
 
 # Output file
 output_btn = ttk.Button(
-    input_frame, text="Output file", bootstyle=SECONDARY, command=output_file, width=15  # use o mesmo valor
+    input_frame, text="Output file", bootstyle=SECONDARY, command=output_file, width=15
 )
 output_btn.grid(row=1, column=0, sticky="w", padx=(40, 10), pady=(0, 5))
 output_feedback_var = StringVar()
@@ -68,13 +68,13 @@ output_feedback_label = ttk.Label(
 )
 output_feedback_label.grid(row=1, column=1, sticky="w", padx=(0, 40), pady=(0, 5))
 
-# Separador visual
+# Horizontal separator
 separator = ttk.Separator(root, orient="horizontal")
 separator.pack(fill="x", pady=20)
 
-# Container para botões de ação
+# Container for action buttons
 action_frame = ttk.Frame(root)
-action_frame.pack(side=TOP, pady=(0, 0))  # Reduza ou remova o padding inferior
+action_frame.pack(side=TOP, pady=(0, 0))
 
 encode_btn = ttk.Button(
     action_frame, text="Encode", bootstyle=SUCCESS, command=encode
