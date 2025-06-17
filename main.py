@@ -67,7 +67,7 @@ def decode():
 
 root = tk.Tk()
 root.iconbitmap(resource_path("img/empyreus.ico"))
-root.title("Empyreus")
+root.title("Empyreus (subliminal audio generator)")
 center_window(root, 400, 210)
 
 input_file_path = StringVar()
