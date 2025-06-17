@@ -1,1 +1,1 @@
-pyinstaller --clean --onefile --windowed main.py
+pyinstaller --clean --windowed --onefile --add-data "img\*;img" main.py
