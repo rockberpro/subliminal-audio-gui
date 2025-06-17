@@ -4,6 +4,8 @@ from tkinter import messagebox
 from tkinter import filedialog
 from tkinter import StringVar
 import tkinter as tk
+import sys
+import os
 
 from decoder import decoder
 from encoder import encoder
@@ -14,6 +16,15 @@ def center_window(window, width=300, height=200):
     x = (screen_width // 2) - (width // 2)
     y = (screen_height // 2) - (height // 2)
     window.geometry(f'{width}x{height}+{x}+{y}')
+
+def resource_path(relative_path):
+    """Get absolute path to resource"""
+    try:
+        base_path = sys._MEIPASS  # PyInstaller creates a temp folder and stores path in _MEIPASS
+    except Exception:
+        base_path = os.path.abspath(".")
+
+    return os.path.join(base_path, relative_path)
 
 def input_file():
     file_path = filedialog.askopenfilename(
@@ -55,7 +66,7 @@ def decode():
     decoder.decode_audio(input_file_path.get(), output_file_path.get())
 
 root = tk.Tk()
-root.iconbitmap('./img/radar.ico')
+root.iconbitmap(resource_path("img/radar.ico"))
 root.title("Subliminal Audio Generator")
 center_window(root, 400, 210)
 
