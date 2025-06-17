@@ -66,8 +66,8 @@ def decode():
     decoder.decode_audio(input_file_path.get(), output_file_path.get())
 
 root = tk.Tk()
-root.iconbitmap(resource_path("img/radar.ico"))
-root.title("Subliminal Audio Generator")
+root.iconbitmap(resource_path("img/empyreus.ico"))
+root.title("Empyreus (subliminal audio generator)")
 center_window(root, 400, 210)
 
 input_file_path = StringVar()
