@@ -1,1 +1,1 @@
-pyinstaller --clean --windowed --onefile --add-data "img\*;img" --name="Empyreus" main.py
+pyinstaller --clean --windowed --onefile --add-data "img\*;img" --name="Empyreus 1.0" main.py
